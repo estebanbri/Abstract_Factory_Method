@@ -8,16 +8,21 @@ import creational.product.impl.USDolar;
 
 public class FactoryMonedaImpl extends FactoryMoneda {
 
+    @Override
     protected IMoneda getMoneda(String pais) {
+        IMoneda moneda = null;
+
         switch (pais){
             case "ARGENTINA":
-                return  new PesoArgentino();
+                moneda =  new PesoArgentino(); break;
             case "EEUU":
-                return new USDolar();
+                moneda = new USDolar(); break;
             case "SINGAPUR":
-                return new SGDolar();
+                moneda = new SGDolar(); break;
             default:
                 throw new IllegalArgumentException("Tipo de pais desconocido");
         }
+
+        return moneda;
     }
 }
